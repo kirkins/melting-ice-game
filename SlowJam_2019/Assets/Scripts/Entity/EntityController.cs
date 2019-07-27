@@ -22,6 +22,8 @@ public class EntityController : MonoBehaviour
         cameraFollow = Camera.main.GetComponent<CameraFollow>();
 
         entityMesh = GetComponent<MeshFilter>();
+
+        sizeSettings.entityBaseScale = transform.localScale;
     }
 
     public virtual void SpecialShrink(Vector3 hitPoint)
@@ -69,6 +71,8 @@ public class EntityController : MonoBehaviour
         
             transform.localScale = newSize;
         }     
+        
+        Debug.Log(GetComponent<Collider>().bounds.size);
     }
 
     public virtual void EnlargeEntitySize()
@@ -150,6 +154,8 @@ public class EntityController : MonoBehaviour
 public struct EntitySizeSettings
 {
     [Header("Entity Size Attributes")] 
+    public Vector3 entityBaseScale;
+    
     public bool canXBeModified;
     public bool canYBeModified;
     public bool canZBeModified;
