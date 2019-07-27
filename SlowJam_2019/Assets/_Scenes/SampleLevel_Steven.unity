@@ -1349,7 +1349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraActiveTargets: []
   cameraSettings:
-    moveSmoothing: 0.8
+    moveSmoothing: 0.2
     rotationalSmoothing: 0
     offset: {x: 0, y: 2, z: -20}
     minZoom: 60
@@ -1714,6 +1714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionSettings:
+    interactionCheckSize: 0
     interactionMask:
       serializedVersion: 2
       m_Bits: 256
@@ -3618,30 +3619,30 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7417286304446181784, guid: 3d10dfc78485fce4aade3d5e191bad25,
+        type: 3}
+      propertyPath: sizeSettings.canYBeModified
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417286304446181784, guid: 3d10dfc78485fce4aade3d5e191bad25,
+        type: 3}
+      propertyPath: sizeSettings.canZBeModified
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417286304446181784, guid: 3d10dfc78485fce4aade3d5e191bad25,
+        type: 3}
+      propertyPath: sizeSettings.canXBeModified
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417286304446181784, guid: 3d10dfc78485fce4aade3d5e191bad25,
+        type: 3}
+      propertyPath: sizeSettings.shrinkMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7417286304446181784, guid: 3d10dfc78485fce4aade3d5e191bad25,
+        type: 3}
+      propertyPath: sizeSettings.enlargeMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d10dfc78485fce4aade3d5e191bad25, type: 3}
---- !u!1 &7417286304446181783 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7417286303151025800, guid: 3d10dfc78485fce4aade3d5e191bad25,
-    type: 3}
-  m_PrefabInstance: {fileID: 7417286304446181782}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7417286304446181784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7417286304446181783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2deeb47ac92e054d9f0bb02af6ee1c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sizeSettings:
-    shrinkMultiplier: 5
-    enlargeMultiplier: 5
-    minSize: 0.1
-    maxSize: 2
-    isKilledAfterMinSize: 1
-    isKilledAfterMaxSize: 0

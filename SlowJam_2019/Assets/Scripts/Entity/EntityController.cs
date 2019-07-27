@@ -54,7 +54,7 @@ public class EntityController : MonoBehaviour
         {
             Vector3 newSize = ReturnNewSize(SIZE_DIRECTION.SHRINK, transform.localScale);
             newSize -= Vector3.one * sizeSettings.shrinkMultiplier * Time.deltaTime;
-                        
+                                   
             if (newSize.sqrMagnitude < sizeSettings.minSize)
             {
                 if (sizeSettings.isKilledAfterMinSize)
@@ -76,7 +76,7 @@ public class EntityController : MonoBehaviour
         if (sizeSettings.canBeEnlarged)
         {
             Vector3 newSize = ReturnNewSize(SIZE_DIRECTION.ENLARGE, transform.localScale);
-                
+                            
             if (newSize.sqrMagnitude > sizeSettings.maxSize)
             {
                 if (sizeSettings.isKilledAfterMaxSize)
@@ -109,17 +109,17 @@ public class EntityController : MonoBehaviour
 
             if (sizeSettings.canXBeModified)
             {
-                newSize.x -= 1 * sizeMultiplier * Time.deltaTime;
+                newSize.x -= 1f * sizeMultiplier * Time.deltaTime;
             }
 
             if (sizeSettings.canYBeModified)
             {
-                newSize.y -= 1 * sizeMultiplier * Time.deltaTime;
+                newSize.y -= 1f * sizeMultiplier * Time.deltaTime;
             }
 
             if (sizeSettings.canZBeModified)
             {
-                newSize.z -= 1 * sizeMultiplier * Time.deltaTime;
+                newSize.z -= 1f * sizeMultiplier * Time.deltaTime;
             }
         }
         else

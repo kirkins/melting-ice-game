@@ -1500,12 +1500,12 @@ MonoBehaviour:
     canXBeModified: 1
     canYBeModified: 0
     canZBeModified: 0
-    shrinkMultiplier: 2
-    enlargeMultiplier: 2
+    shrinkMultiplier: 0.2
+    enlargeMultiplier: 0.2
     minSize: 18
     maxSize: 0
     canBeShrinked: 1
-    canBeEnlarged: 1
+    canBeEnlarged: 0
     isKilledAfterMinSize: 1
     isKilledAfterMaxSize: 1
 --- !u!1 &1923981360
