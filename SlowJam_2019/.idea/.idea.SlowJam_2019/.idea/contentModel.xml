@@ -145,6 +145,9 @@
           <e p="Entity" t="Include">
             <e p="EntityController.cs" t="Include" />
           </e>
+          <e p="Obstacles" t="Include">
+            <e p="ForceZone.cs" t="Include" />
+          </e>
           <e p="Player" t="Include">
             <e p="PlayerController.cs" t="Include" />
             <e p="PlayerInput.cs" t="Include" />
