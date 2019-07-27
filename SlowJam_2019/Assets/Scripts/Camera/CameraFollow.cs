@@ -152,6 +152,14 @@ public class CameraFollow : MonoBehaviour
        return newActiveTargets;
    }
 
+   public void RemoveTarget(Transform targetToRemove)
+   {
+       if (cameraActiveTargets.Contains(targetToRemove))
+       {
+           cameraActiveTargets.Remove(targetToRemove);
+       }
+   }
+   
    private void ClearActiveTargets()
    {
        cameraActiveTargets.Clear();

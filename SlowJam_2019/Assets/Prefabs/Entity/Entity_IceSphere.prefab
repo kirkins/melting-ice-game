@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 7417286303151025845}
   - component: {fileID: 7417286303151025844}
   - component: {fileID: 7417286303151025847}
-  - component: {fileID: 7417286303151025846}
+  - component: {fileID: 7417286304446181785}
   - component: {fileID: 7417286303151025801}
+  - component: {fileID: 7417286304446181784}
   m_Layer: 8
   m_Name: Entity_IceSphere
   m_TagString: Entity
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -59,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 82cb1a4d7baa54345ac8e98af24774f7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &7417286303151025846
+--- !u!135 &7417286304446181785
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,3 +109,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 8
   m_CollisionDetection: 0
+--- !u!114 &7417286304446181784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417286303151025800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2deeb47ac92e054d9f0bb02af6ee1c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeSettings:
+    canXBeModified: 1
+    canYBeModified: 1
+    canZBeModified: 1
+    shrinkMultiplier: 2
+    enlargeMultiplier: 2
+    minSize: 0.1
+    maxSize: 2
+    canBeShrinked: 1
+    canBeEnlarged: 1
+    isKilledAfterMinSize: 1
+    isKilledAfterMaxSize: 0
