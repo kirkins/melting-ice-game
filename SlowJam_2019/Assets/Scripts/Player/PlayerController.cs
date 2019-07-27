@@ -40,20 +40,20 @@ public class PlayerController : MonoBehaviour
     {
         if (CheckForShrinkInteractionInput(input))
         {
-            EntityController hitEntity = interaction.SearchForEntity();
+            HitEntityInfo hitEntity = interaction.SearchForEntity();
 
-            if (hitEntity != null)
+            if (hitEntity.entityController != null)
             {
-                hitEntity.ShrinkEntitySize();
+                hitEntity.entityController.ShrinkEntitySize();
             }
         }
         else if (CheckForEnlargeInteractionInput(input))
         {
-            EntityController hitEntity = interaction.SearchForEntity();
+            HitEntityInfo hitEntity = interaction.SearchForEntity();
 
-            if (hitEntity != null)
+            if (hitEntity.entityController != null)
             {
-                hitEntity.EnlargeEntitySize();
+                hitEntity.entityController.EnlargeEntitySize();
             }
         }
     }

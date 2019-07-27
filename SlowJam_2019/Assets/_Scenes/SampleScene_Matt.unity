@@ -711,7 +711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraActiveTargets: []
   cameraSettings:
-    moveSmoothing: 0.8
+    moveSmoothing: 0.01
     rotationalSmoothing: 0
     offset: {x: 0, y: 2, z: -20}
     minZoom: 30
@@ -780,7 +780,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cb49acd76d70cbb46851dbc562508bb9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -892,6 +892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionSettings:
+    interactionCheckSize: 5
     interactionMask:
       serializedVersion: 2
       m_Bits: 256
@@ -999,7 +1000,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cb49acd76d70cbb46851dbc562508bb9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1090,7 +1091,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cb49acd76d70cbb46851dbc562508bb9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1181,7 +1182,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cb49acd76d70cbb46851dbc562508bb9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1272,7 +1273,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cb49acd76d70cbb46851dbc562508bb9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1363,7 +1364,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cb49acd76d70cbb46851dbc562508bb9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1403,7 +1404,8 @@ GameObject:
   - component: {fileID: 1916452745}
   - component: {fileID: 1916452744}
   - component: {fileID: 1916452743}
-  m_Layer: 0
+  - component: {fileID: 1916452746}
+  m_Layer: 8
   m_Name: Cube (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1454,7 +1456,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 32421c140cacfd44abc8a28d506910a2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1482,6 +1484,30 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916452741}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1916452746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916452741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2deeb47ac92e054d9f0bb02af6ee1c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeSettings:
+    canXBeModified: 1
+    canYBeModified: 0
+    canZBeModified: 0
+    shrinkMultiplier: 2
+    enlargeMultiplier: 2
+    minSize: 18
+    maxSize: 0
+    canBeShrinked: 1
+    canBeEnlarged: 1
+    isKilledAfterMinSize: 1
+    isKilledAfterMaxSize: 1
 --- !u!1 &1923981360
 GameObject:
   m_ObjectHideFlags: 0
@@ -1545,7 +1571,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cb49acd76d70cbb46851dbc562508bb9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1642,28 +1668,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d10dfc78485fce4aade3d5e191bad25, type: 3}
---- !u!1 &7417286304446181783 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7417286303151025800, guid: 3d10dfc78485fce4aade3d5e191bad25,
-    type: 3}
-  m_PrefabInstance: {fileID: 7417286304446181782}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7417286304446181784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7417286304446181783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2deeb47ac92e054d9f0bb02af6ee1c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sizeSettings:
-    shrinkMultiplier: 5
-    enlargeMultiplier: 5
-    minSize: 0.1
-    maxSize: 2
-    isKilledAfterMinSize: 1
-    isKilledAfterMaxSize: 0
