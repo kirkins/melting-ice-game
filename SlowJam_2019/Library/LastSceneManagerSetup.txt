@@ -1,12 +1,18 @@
 sceneSetups:
 <<<<<<< HEAD
+<<<<<<< HEAD
 - path: Assets/_Scenes/SampleScene_NotMatt.unity
 =======
+=======
+>>>>>>> master
 <<<<<<< Updated upstream
 - path: Assets/_Scenes/_Level1.unity
 =======
 - path: Assets/_Scenes/Level_Matt.unity
 >>>>>>> Stashed changes
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
   isLoaded: 1
   isActive: 1
