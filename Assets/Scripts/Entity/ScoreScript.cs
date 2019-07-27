@@ -7,7 +7,7 @@ public class ScoreScript : MonoBehaviour
     private float startScore;
     private float endScore;
 
-    int GetScore(Vector3 v)
+    float GetScore(Vector3 v)
     {
         return (v[0] * v[1] * v[2] * 1000);
     }
