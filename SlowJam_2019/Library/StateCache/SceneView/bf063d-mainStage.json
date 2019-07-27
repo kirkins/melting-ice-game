@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 ﻿{"cameraMode":{"drawMode":2,"name":"Shaded Wireframe","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":false,"pivot":{"x":4.48516321182251,"y":-13.642210960388184,"z":7.1408796310424809},"rotation":{"x":0.12928152084350587,"y":0.12938587367534638,"z":-0.01701812818646431,"w":0.9829882979393005},"size":10.113730430603028,"orthographic":false}
+=======
+﻿{"cameraMode":{"drawMode":2,"name":"Shaded Wireframe","section":"Shading Mode"},"sceneLighting":true,"audioPlay":false,"sceneViewState":{"showFog":true,"showMaterialUpdate":false,"showSkybox":true,"showFlares":true,"showImageEffects":true,"showParticleSystems":true},"in2DMode":false,"pivot":{"x":1.6805552244186402,"y":-0.46351975202560427,"z":0.08444094657897949},"rotation":{"x":-0.01622726023197174,"y":-0.02062305063009262,"z":-0.00033515747054480016,"w":0.9996568560600281},"size":1.3578839302062989,"orthographic":false}
+>>>>>>> SpookyMaterialMakingBranch
