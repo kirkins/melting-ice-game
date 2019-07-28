@@ -7,6 +7,12 @@ public class EntityController : MonoBehaviour
     [Header("Entity Size Settings")] 
     public EntitySizeSettings sizeSettings;
 
+    public float jumpStrength = 5;
+    public float jumpBoostStrength = 15;
+    public float boostStrength = 50;
+
+    Renderer rend;
+
     [Space(10)] 
     private CameraFollow cameraFollow;
 
@@ -75,8 +81,7 @@ public class EntityController : MonoBehaviour
         
             transform.localScale = newSize;
         }     
-        
-        Debug.Log(GetComponent<Collider>().bounds.size);
+
     }
 
     public virtual void EnlargeEntitySize()
@@ -163,8 +168,6 @@ public class EntityController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody>();
 
-        Debug.Log("scale = " + transform.localScale[0]);
-
         if(transform.localScale[0]>0.9)
         {
             transform.localScale -= new Vector3(0.01F, 0.01F, 0.01F);
@@ -177,16 +180,23 @@ public class EntityController : MonoBehaviour
             transform.localScale -= new Vector3(0.001F, 0.001F, 0.001F);
         }
 
+
+        if (Input.GetKey("space"))
+        {
+            Jump();
+        }
+
+    }
+
+    void FixedUpdate()
+    {
         if (Input.GetKey("left"))
         {
-            if (Input.GetKey("b"))
-            {
-                rigidBody.AddForce(Vector2.left * 50);
-            }
-            else
-            {
-                rigidBody.AddForce(Vector2.left * 5);
-            }
+        rigidBody.AddForce(Vector3.left *
+            ((Input.GetKey("b")) ?
+            boostStrength :
+            jumpStrength)
+            );
         }
 
         if (Input.GetKey("right"))
@@ -201,37 +211,34 @@ public class EntityController : MonoBehaviour
             }
         }
 
+
         if (Input.GetKey("up"))
         {
             Jump();
         }
-        if (Input.GetKey("space"))
-        {
-            ShrinkEntitySize();
-        }
 
     }
 
-    void Landed() { grounded = true; }
+    void OnCollisionEnter()
+    {
+        grounded = true;
+    }
 
     void Jump()
     {
         if (grounded)
-        {
-            if (Input.GetKey("b"))
-            {
-                rigidBody.velocity = new Vector3(0f, 15, 0f);
-            }
-            else
-            {
-                rigidBody.velocity = new Vector3(0f, 5, 0f);
-            }
-
+        { 
+            rigidBody.AddForce(Vector3.up * 
+                ((Input.GetKey("b")) ? 
+                    jumpBoostStrength : 
+                    jumpStrength ),
+                    ForceMode.Impulse);
             grounded = false;
-            Invoke("Landed", 3);
         }
     }
 }
+
+
 
 [System.Serializable]
 public struct EntitySizeSettings

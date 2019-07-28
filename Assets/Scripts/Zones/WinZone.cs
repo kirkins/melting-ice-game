@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WinZone : Zone
 {
@@ -21,8 +22,17 @@ public class WinZone : Zone
         }
     }
 
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Entity"))
+        {
+            ActivateWinZone();
+        }
+    }
+
     private void ActivateWinZone()
     {
-        
+        int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.LoadScene(nextScene);
     }
 }

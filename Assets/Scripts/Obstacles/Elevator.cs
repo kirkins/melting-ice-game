@@ -11,7 +11,6 @@ public class Elevator : MonoBehaviour
 
     void move()
     {
-        Debug.Log(transform.position.y);
         if (transform.position.y >= 10)
         {
             moveDirection = Vector3.right;
