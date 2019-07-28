@@ -193,12 +193,6 @@ public class EntityController : MonoBehaviour
             transform.localScale -= new Vector3(0.001F, 0.001F, 0.001F);
         }
 
-
-        if (Input.GetKey("space") || Input.GetKey("up"))
-        {
-            Jump();
-        }
-
     }
 
     void FixedUpdate()
@@ -214,18 +208,24 @@ public class EntityController : MonoBehaviour
 
         if (Input.GetKey("right"))
         {
-            if (Input.GetKey("b"))
-            {
-                rigidBody.AddForce(Vector2.right * 50);
-            }
-            else
-            {
-                rigidBody.AddForce(Vector2.right * 5);
-            }
+            rigidBody.AddForce(Vector3.right *
+                ((Input.GetKey("b")) ?
+                boostStrength :
+                jumpStrength)
+                );
+        }
+
+        if (Input.GetKey("down"))
+        {
+            rigidBody.AddForce(Vector3.down *
+                ((Input.GetKey("b")) ?
+                boostStrength :
+                jumpStrength)
+                );
         }
 
 
-        if (Input.GetKey("up"))
+        if (Input.GetKey("space") || Input.GetKey("up"))
         {
             Jump();
         }
