@@ -15,10 +15,12 @@ public class GrowItem : MonoBehaviour
 
     public void OnTriggerEnter(Collider collider)
     {
-        if(collider.gameObject.CompareTag("Entity"))
+        print("t it");
+        if (collider.gameObject.CompareTag("Entity"))
         {
+            print("got it");
             // Call grow function below
-            //collider.gameObject.GetComponent<EntityController>().GrowFromItem();
+            collider.gameObject.GetComponent<EntityController>().GrowFromItem();
         }
             
         Destroy(gameObject);

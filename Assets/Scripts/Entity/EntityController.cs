@@ -148,6 +148,12 @@ public class EntityController : MonoBehaviour
 
         return newSize;
     }
+
+    public void GrowFromItem()
+    {
+        Vector3 newSize = new Vector3(4, 4, 4);
+        transform.localScale = newSize;
+    }
 }
 
 [System.Serializable]
