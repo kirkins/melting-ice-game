@@ -10,7 +10,9 @@ public class EntityController : MonoBehaviour
     [Space(10)] 
     private CameraFollow cameraFollow;
 
+    private MeshCollider entityMeshCollider;
     private MeshFilter entityMesh;
+    private Rigidbody myRigidbody;
     
     private void Awake()
     {
@@ -23,6 +25,10 @@ public class EntityController : MonoBehaviour
 
         entityMesh = GetComponent<MeshFilter>();
 
+        myRigidbody = GetComponent<Rigidbody>();
+
+        entityMeshCollider = GetComponent<MeshCollider>();
+
         sizeSettings.entityBaseScale = transform.localScale;
     }
 
@@ -31,23 +37,31 @@ public class EntityController : MonoBehaviour
         Mesh myMesh = entityMesh.mesh;
 
         Vector3[] modifiedVertices = myMesh.vertices;
-   
-        for (int i = 0; i < modifiedVertices.Length; i++)
-        {
-            Vector3 worldMeshPoint = transform.TransformPoint(modifiedVertices[i]);
-            
-            Vector3 interceptPoint = worldMeshPoint - hitPoint;
-            
-            float distanceFromPoint = Vector3.Distance(hitPoint, worldMeshPoint);
 
-            if (distanceFromPoint < 1f)
+        Vector3 meshCenter = myRigidbody.centerOfMass;
+   
+        Debug.Log("Hit Object :: " + gameObject.name);
+        
+        for (int i = 0; i < modifiedVertices.Length; i++)
+        {  
+            Vector3 worldMeshPoint = transform.TransformPoint(modifiedVertices[i]);
+            Vector3 interceptDirection = (meshCenter - worldMeshPoint).normalized;
+
+            float distanceBetweenPoint = Vector3.Distance(hitPoint, worldMeshPoint);
+
+            if (distanceBetweenPoint < sizeSettings.modifyThreshold)
             {
-                modifiedVertices[i] += interceptPoint.normalized * Time.deltaTime;
+                float distanceRatio = (sizeSettings.modifyThreshold - distanceBetweenPoint) / sizeSettings.modifyThreshold;
+                
+                modifiedVertices[i] += interceptDirection * distanceRatio * sizeSettings.shrinkMultiplier * Time.deltaTime;
             }
         }
 
         myMesh.vertices = modifiedVertices;
+        
         myMesh.RecalculateNormals();
+
+        entityMeshCollider.sharedMesh = myMesh;
     }
     
     public virtual void ShrinkEntitySize()
@@ -155,6 +169,9 @@ public struct EntitySizeSettings
 {
     [Header("Entity Size Attributes")] 
     public Vector3 entityBaseScale;
+
+    [Space(10)] 
+    public float modifyThreshold;
     
     public bool canXBeModified;
     public bool canYBeModified;
