@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
             if (hitEntity.entityController != null)
             {
-                hitEntity.entityController.ShrinkEntitySize();
+                hitEntity.entityController.SpecialShrink(hitEntity.hitPoint);
             }
         }
         else if (CheckForEnlargeInteractionInput(input))
