@@ -181,7 +181,7 @@ public class EntityController : MonoBehaviour
         }
 
 
-        if (Input.GetKey("space"))
+        if (Input.GetKey("space") || Input.GetKey("up"))
         {
             Jump();
         }
@@ -219,21 +219,28 @@ public class EntityController : MonoBehaviour
 
     }
 
-    void OnCollisionEnter()
+    void OnCollisionStay(Collision collision)
     {
-        grounded = true;
+        grounded = false;
+        foreach(ContactPoint contact in collision.contacts)
+        {
+            if(Vector3.Dot(contact.normal, Vector3.up) > 0.25f)
+            {
+                grounded = true;
+            }
+        }
     }
 
     void Jump()
     {
         if (grounded)
-        { 
-            rigidBody.AddForce(Vector3.up * 
-                ((Input.GetKey("b")) ? 
-                    jumpBoostStrength : 
-                    jumpStrength ),
-                    ForceMode.Impulse);
+        {
             grounded = false;
+            rigidBody.AddForce(Vector3.up *
+                ((Input.GetKey("b")) ?
+                    jumpBoostStrength :
+                    jumpStrength),
+                    ForceMode.Impulse);
         }
     }
 }
