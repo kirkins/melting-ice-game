@@ -12,8 +12,11 @@ public class EntityController : MonoBehaviour
 
     private MeshCollider entityMeshCollider;
     private MeshFilter entityMesh;
-    private Rigidbody myRigidbody;
-    
+
+    private Rigidbody rigidBody;
+
+    private bool grounded = true;
+
     private void Awake()
     {
         InitializeEntity();
@@ -161,6 +164,85 @@ public class EntityController : MonoBehaviour
         }
 
         return newSize;
+    }
+
+    public void GrowFromItem()
+    {
+        Vector3 newSize = new Vector3(4, 4, 4);
+        transform.localScale = newSize;
+    }
+
+    void Update()
+    {
+        rigidBody = GetComponent<Rigidbody>();
+
+        Debug.Log("scale = " + transform.localScale[0]);
+
+        if(transform.localScale[0]>0.9)
+        {
+            transform.localScale -= new Vector3(0.01F, 0.01F, 0.01F);
+        } else if (transform.localScale[0] > 0.7)
+        {
+            transform.localScale -= new Vector3(0.001F, 0.001F, 0.001F);
+        }
+        else
+        {
+            transform.localScale -= new Vector3(0.001F, 0.001F, 0.001F);
+        }
+
+        if (Input.GetKey("left"))
+        {
+            if (Input.GetKey("b"))
+            {
+                rigidBody.AddForce(Vector2.left * 50);
+            }
+            else
+            {
+                rigidBody.AddForce(Vector2.left * 5);
+            }
+        }
+
+        if (Input.GetKey("right"))
+        {
+            if (Input.GetKey("b"))
+            {
+                rigidBody.AddForce(Vector2.right * 50);
+            }
+            else
+            {
+                rigidBody.AddForce(Vector2.right * 5);
+            }
+        }
+
+        if (Input.GetKey("up"))
+        {
+            Jump();
+        }
+        if (Input.GetKey("space"))
+        {
+            ShrinkEntitySize();
+        }
+
+    }
+
+    void Landed() { grounded = true; }
+
+    void Jump()
+    {
+        if (grounded)
+        {
+            if (Input.GetKey("b"))
+            {
+                rigidBody.velocity = new Vector3(0f, 15, 0f);
+            }
+            else
+            {
+                rigidBody.velocity = new Vector3(0f, 5, 0f);
+            }
+
+            grounded = false;
+            Invoke("Landed", 3);
+        }
     }
 }
 
