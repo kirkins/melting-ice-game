@@ -34,7 +34,7 @@ public class EntityController : MonoBehaviour
 
         entityMesh = GetComponent<MeshFilter>();
 
-        myRigidbody = GetComponent<Rigidbody>();
+        rigidBody = GetComponent<Rigidbody>();
 
         entityMeshCollider = GetComponent<MeshCollider>();
 
@@ -47,7 +47,7 @@ public class EntityController : MonoBehaviour
 
         Vector3[] modifiedVertices = myMesh.vertices;
 
-        Vector3 meshCenter = myRigidbody.centerOfMass;
+        Vector3 meshCenter = rigidBody.centerOfMass;
    
         Debug.Log("Hit Object :: " + gameObject.name);
         
