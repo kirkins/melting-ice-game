@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -564,8 +564,9 @@ GameObject:
   - component: {fileID: 283586805}
   - component: {fileID: 283586804}
   - component: {fileID: 283586803}
+  - component: {fileID: 283586806}
   m_Layer: 0
-  m_Name: Cube (23)
+  m_Name: Goal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -643,6 +644,30 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 283586801}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &283586806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 283586801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c54fb289969c054ea3f14139d8b89e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoneSettings:
+    zoneShape: 0
+    zoneSize: {x: 0, y: 0, z: 0}
+    zoneRotation: {x: 0, y: 0, z: 0}
+    zoneRadius: 0
+    zoneForceDirection: {x: 0, y: 0, z: 0}
+    zoneForceStrength: 0
+    zoneMask:
+      serializedVersion: 2
+      m_Bits: 0
+  isZoneActive: 1
+  detectedColliders: []
 --- !u!1 &466801609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1317,7 +1342,7 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -3163,6 +3188,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: cb49acd76d70cbb46851dbc562508bb9, type: 2}
+      objectReference: {fileID: 2100000, guid: b1eda4ab95d6c8e4e89fcd906fb6db26, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d10dfc78485fce4aade3d5e191bad25, type: 3}

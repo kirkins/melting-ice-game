@@ -7,11 +7,22 @@ public class EntityController : MonoBehaviour
     [Header("Entity Size Settings")] 
     public EntitySizeSettings sizeSettings;
 
+    public float jumpStrength = 5;
+    public float jumpBoostStrength = 15;
+    public float boostStrength = 50;
+
+    Renderer rend;
+
     [Space(10)] 
     private CameraFollow cameraFollow;
 
+    private MeshCollider entityMeshCollider;
     private MeshFilter entityMesh;
-    
+
+    private Rigidbody rigidBody;
+
+    private bool grounded = true;
+
     private void Awake()
     {
         InitializeEntity();
@@ -23,6 +34,10 @@ public class EntityController : MonoBehaviour
 
         entityMesh = GetComponent<MeshFilter>();
 
+        rigidBody = GetComponent<Rigidbody>();
+
+        entityMeshCollider = GetComponent<MeshCollider>();
+
         sizeSettings.entityBaseScale = transform.localScale;
     }
 
@@ -31,23 +46,31 @@ public class EntityController : MonoBehaviour
         Mesh myMesh = entityMesh.mesh;
 
         Vector3[] modifiedVertices = myMesh.vertices;
-   
-        for (int i = 0; i < modifiedVertices.Length; i++)
-        {
-            Vector3 worldMeshPoint = transform.TransformPoint(modifiedVertices[i]);
-            
-            Vector3 interceptPoint = worldMeshPoint - hitPoint;
-            
-            float distanceFromPoint = Vector3.Distance(hitPoint, worldMeshPoint);
 
-            if (distanceFromPoint < 1f)
+        Vector3 meshCenter = rigidBody.centerOfMass;
+   
+        Debug.Log("Hit Object :: " + gameObject.name);
+        
+        for (int i = 0; i < modifiedVertices.Length; i++)
+        {  
+            Vector3 worldMeshPoint = transform.TransformPoint(modifiedVertices[i]);
+            Vector3 interceptDirection = (meshCenter - worldMeshPoint).normalized;
+
+            float distanceBetweenPoint = Vector3.Distance(hitPoint, worldMeshPoint);
+
+            if (distanceBetweenPoint < sizeSettings.modifyThreshold)
             {
-                modifiedVertices[i] += interceptPoint.normalized * Time.deltaTime;
+                float distanceRatio = (sizeSettings.modifyThreshold - distanceBetweenPoint) / sizeSettings.modifyThreshold;
+                
+                modifiedVertices[i] += interceptDirection * distanceRatio * sizeSettings.shrinkMultiplier * Time.deltaTime;
             }
         }
 
         myMesh.vertices = modifiedVertices;
+        
         myMesh.RecalculateNormals();
+
+        entityMeshCollider.sharedMesh = myMesh;
     }
     
     public virtual void ShrinkEntitySize()
@@ -71,8 +94,7 @@ public class EntityController : MonoBehaviour
         
             transform.localScale = newSize;
         }     
-        
-        Debug.Log(GetComponent<Collider>().bounds.size);
+
     }
 
     public virtual void EnlargeEntitySize()
@@ -148,13 +170,104 @@ public class EntityController : MonoBehaviour
 
         return newSize;
     }
+
+    public void GrowFromItem()
+    {
+        Vector3 newSize = new Vector3(4, 4, 4);
+        transform.localScale = newSize;
+    }
+
+    void Update()
+    {
+        rigidBody = GetComponent<Rigidbody>();
+
+        if(transform.localScale[0]>0.9)
+        {
+            transform.localScale -= new Vector3(0.01F, 0.01F, 0.01F);
+        } else if (transform.localScale[0] > 0.7)
+        {
+            transform.localScale -= new Vector3(0.001F, 0.001F, 0.001F);
+        }
+        else
+        {
+            transform.localScale -= new Vector3(0.001F, 0.001F, 0.001F);
+        }
+
+    }
+
+    void FixedUpdate()
+    {
+        if (Input.GetKey("left"))
+        {
+        rigidBody.AddForce(Vector3.left *
+            ((Input.GetKey("b")) ?
+            boostStrength :
+            jumpStrength)
+            );
+        }
+
+        if (Input.GetKey("right"))
+        {
+            rigidBody.AddForce(Vector3.right *
+                ((Input.GetKey("b")) ?
+                boostStrength :
+                jumpStrength)
+                );
+        }
+
+        if (Input.GetKey("down"))
+        {
+            rigidBody.AddForce(Vector3.down *
+                ((Input.GetKey("b")) ?
+                boostStrength :
+                jumpStrength)
+                );
+        }
+
+
+        if (Input.GetKey("space") || Input.GetKey("up"))
+        {
+            Jump();
+        }
+
+    }
+
+    void OnCollisionStay(Collision collision)
+    {
+        grounded = false;
+        foreach(ContactPoint contact in collision.contacts)
+        {
+            if(Vector3.Dot(contact.normal, Vector3.up) > 0.25f)
+            {
+                grounded = true;
+            }
+        }
+    }
+
+    void Jump()
+    {
+        if (grounded)
+        {
+            grounded = false;
+            rigidBody.AddForce(Vector3.up *
+                ((Input.GetKey("b")) ?
+                    jumpBoostStrength :
+                    jumpStrength),
+                    ForceMode.Impulse);
+        }
+    }
 }
+
+
 
 [System.Serializable]
 public struct EntitySizeSettings
 {
     [Header("Entity Size Attributes")] 
     public Vector3 entityBaseScale;
+
+    [Space(10)] 
+    public float modifyThreshold;
     
     public bool canXBeModified;
     public bool canYBeModified;

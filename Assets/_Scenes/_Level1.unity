@@ -2277,7 +2277,7 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 1, g: 0, b: 0.72794294, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -3623,6 +3623,8 @@ GameObject:
   - component: {fileID: 1684357503}
   - component: {fileID: 1684357502}
   - component: {fileID: 1684357501}
+  - component: {fileID: 1684357506}
+  - component: {fileID: 1684357507}
   m_Layer: 0
   m_Name: Goal
   m_TagString: Untagged
@@ -3926,6 +3928,54 @@ Transform:
   m_Father: {fileID: 1570741438}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1684357506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684357500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c54fb289969c054ea3f14139d8b89e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoneSettings:
+    zoneShape: 0
+    zoneSize: {x: 0, y: 0, z: 0}
+    zoneRotation: {x: 0, y: 0, z: 0}
+    zoneRadius: 0
+    zoneForceDirection: {x: 0, y: 0, z: 0}
+    zoneForceStrength: 0
+    zoneMask:
+      serializedVersion: 2
+      m_Bits: 0
+  isZoneActive: 1
+  detectedColliders: []
+--- !u!114 &1684357507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684357500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c54fb289969c054ea3f14139d8b89e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoneSettings:
+    zoneShape: 0
+    zoneSize: {x: 0, y: 0, z: 0}
+    zoneRotation: {x: 0, y: 0, z: 0}
+    zoneRadius: 0
+    zoneForceDirection: {x: 0, y: 0, z: 0}
+    zoneForceStrength: 0
+    zoneMask:
+      serializedVersion: 2
+      m_Bits: 0
+  isZoneActive: 1
+  detectedColliders: []
 --- !u!43 &1697960502
 Mesh:
   m_ObjectHideFlags: 0
@@ -5467,5 +5517,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7417286303151025847, guid: 3d10dfc78485fce4aade3d5e191bad25,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b1eda4ab95d6c8e4e89fcd906fb6db26, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d10dfc78485fce4aade3d5e191bad25, type: 3}

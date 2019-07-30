@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrowItem : MonoBehaviour
+public class Item2 : MonoBehaviour
 {
     private Rigidbody rigidBody;
     public GameObject iceBall;
